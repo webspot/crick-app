@@ -32,12 +32,11 @@ public class PlayerController {
         return "Played Saved..";
     }
 
+
     @GetMapping("/pid")
     @ResponseBody
     public Collection<Player> getPlayerData(@RequestParam int id) {
-        
         return repo.getAll().stream().filter(a-> a.getId() == id).collect(Collectors.toList());
     }
-
     
 }
