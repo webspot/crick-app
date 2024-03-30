@@ -4,15 +4,13 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
-
 public class PlayerRepo implements IRepo<Player> {
 
     private Map<Integer, Player> data;
 
-    public PlayerRepo(){
+    public PlayerRepo() {
         this.data = new HashMap<>();
     }
-
 
     @Override
     public void save(Player p) {
@@ -23,5 +21,5 @@ public class PlayerRepo implements IRepo<Player> {
     public Collection<Player> getAll() {
         return data.values();
     }
-    
+
 }
