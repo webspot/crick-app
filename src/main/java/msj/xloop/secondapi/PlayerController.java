@@ -65,7 +65,7 @@ public class PlayerController {
      * @param p
      * @return
      */
-    @GetMapping("/update")
+    @PostMapping("/update")
     public String updatePlayer(@RequestBody Player p) {
         repo.save(p);
         return "Player No. " + p.getId() + " Updated..";
