@@ -1,0 +1,75 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Crickinfo</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>-->
+	
+	<style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            margin: 0 auto;
+            width: 50%;
+        }
+        h1 {
+            text-align: center;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        li:not(:last-child) {
+            margin-bottom: 10px;
+        }
+        label {
+            display: inline-block;
+            margin-right: 10px;
+            vertical-align: middle;
+        }
+        input[type="text"] {
+            padding: 5px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+        }
+        button {
+            padding: 5px 15px;
+            border-radius: 5px;
+            border: none;
+            background-color: #4CAF50;
+            color: white;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #3E8E41;
+        }
+    </style>
+
+</head>
+<body>
+    <div class="container">
+        <!--<h1>International Players List</h1>-->
+        <button onclick="greeting()">Greeting</button>
+    </div>
+</body>
+<script>
+    function greeting()
+    {
+        let httpRequest = new XMLHttpRequest();
+        
+        httpRequest.open("GET", 'http://localhost:8080/player/greeting');
+        //httpRequest.open("GET", 'http://localhost:8080/player/all');
+        httpRequest.setRequestHeader("Access-Control-Allow-Origin", "*");
+        httpRequest.setRequestHeader("Access-Control-Allow-Methods", "POST, GET, PUT");
+        httpRequest.setRequestHeader("Access-Control-Allow-Headers", "Content-Type");
+        
+        httpRequest.send();
+        httpRequest.onload = function(){
+            alert(httpRequest.responseText);
+        }
+        console.log("inside the html file");
+    }
+</script>
+</html>

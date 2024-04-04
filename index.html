@@ -1,0 +1,112 @@
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <title>Crickinfo</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+	
+	<style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            margin: 0 auto;
+            width: 50%;
+        }
+        h1 {
+            text-align: center;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        li:not(:last-child) {
+            margin-bottom: 10px;
+        }
+        label {
+            display: inline-block;
+            margin-right: 10px;
+            vertical-align: middle;
+        }
+        input[type="text"] {
+            padding: 5px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+        }
+        button {
+            padding: 5px 15px;
+            border-radius: 5px;
+            border: none;
+            background-color: #4CAF50;
+            color: white;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #3E8E41;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>International Players List</h1>
+        <form id="form" onsubmit="return setAction(this)">                                       
+			<input name="senderEmail" type="email" placeholder="Email" required>
+			<br />
+			<textarea name="senderMessage" cols="30" rows="10" placeholder="Message.." required></textarea>
+			<br />
+			<button type="submit">Submit</button>
+		</form>
+        <!--<ul id="task-list"></ul>-->
+    </div>
+	
+    <script>
+		welcome();
+		function welcome() {
+			$.ajax({
+				type: "GET",
+				url: "http://localhost:8080/player/",
+				dataType: "json"
+			}).done(function(result){
+			   console.log(result)
+			});
+			/*const url = 'http://localhost:8080/player/';
+			fetch(
+			url,
+			{            
+				headers: { "Content-Type": "application/json" },            
+				method: "GET",
+				body: ""
+			}
+		   )
+		  .then(data => data.json())
+		  .then((json) => {
+			alert(JSON.stringify(json));
+		  });*/
+		}
+		
+        /*function setAction(form) {
+		  const url = 'http://localhost:8080/player/';
+		  const andSign = '&';
+		  const senderParameter = 'sender='+form.senderEmail.value;      
+		  const bodyParameter = 'body='+form.senderMessage.value;
+		  const newUrl = url+senderParameter+andSign+bodyParameter;
+
+		  fetch(
+			newUrl,
+			{            
+				headers: { "Content-Type": "application/json" },            
+				method: "POST",
+				body: ""
+			}
+		   )
+		  .then(data => data.json())
+		  .then((json) => {
+			alert(JSON.stringify(json));
+			document.getElementById("form").reset();     
+		  });
+		  return false;
+		}*/
+    </script>
+</body>
+</html>
